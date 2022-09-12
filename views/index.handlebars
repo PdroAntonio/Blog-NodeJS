@@ -1,11 +1,14 @@
-<div class="bg-light p-5 rounded-lg m-3">
+<div class="bg-light p-5 rounded-lg m-3 text-center">
   <h1 class="display-4">Bem-vindo!</h1>
   <p class="lead">Este é um blog simples criado com o intuito de aprender NodeJS.</p>
   <hr class="my-4">
   <p>Aqui você encontra diversas postagens sobre o mundo da programação.</p>
   {{#if user}}
+  <a class="btn btn-primary btn-lg" href="/admin/postagens" role="button">Editar postagens</a>
+  <a class="btn btn-primary btn-lg" href="/admin/categorias" role="button">Editar categorias</a>
   {{else}}
     <a class="btn btn-primary btn-lg" href="/usuarios/registro" role="button">Crie uma conta</a>
+    <a class="btn btn-primary btn-lg" href="/usuarios/login" role="button">Faça o login</a>
   {{/if}}
 </div>
 
@@ -14,15 +17,20 @@
 <h2>Postagens recentes: </h2>
 
 {{#each postagens}}
-<div class="card mt-4">
-    <div class="card-body">
-        <h3>{{titulo}}</h3>
-        <p>{{descricao}}</p>
-        <a href="/postagem/{{slug}}"><button class="btn btn-success">Leia mais</button></a>
-        <hr>
-        <small>Categoria: {{categoria.nome}}</small><br>
-        <small>Data: {{data}}</small>
+<div class="card-columns">
+  <div class="card text-center text-white bg-dark border-primary mb-3 box">
+    <div class="card-header">
+      {{categoria.nome}}
     </div>
+    <div class="card-body">
+      <h5 class="card-title">{{titulo}}</h5>
+      <p class="card-text">{{descricao}}</p>
+      <a href="/postagem/{{slug}}" class="btn btn-primary">Leia mais</a>
+    </div>
+    <div class="card-footer text-muted">
+      <small>{{data}}</small>
+    </div>
+  </div>
 </div>
 {{else}}
     <h5>Nenhuma postagem</h5>
