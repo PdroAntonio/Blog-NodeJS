@@ -1,0 +1,29 @@
+<div class="bg-light p-5 rounded-lg m-3">
+  <h1 class="display-4">Bem-vindo!</h1>
+  <p class="lead">Este é um blog simples criado com o intuito de aprender NodeJS.</p>
+  <hr class="my-4">
+  <p>Aqui você encontra diversas postagens sobre o mundo da programação.</p>
+  {{#if user}}
+  {{else}}
+    <a class="btn btn-primary btn-lg" href="/usuarios/registro" role="button">Crie uma conta</a>
+  {{/if}}
+</div>
+
+<hr>
+
+<h2>Postagens recentes: </h2>
+
+{{#each postagens}}
+<div class="card mt-4">
+    <div class="card-body">
+        <h3>{{titulo}}</h3>
+        <p>{{descricao}}</p>
+        <a href="/postagem/{{slug}}"><button class="btn btn-success">Leia mais</button></a>
+        <hr>
+        <small>Categoria: {{categoria.nome}}</small><br>
+        <small>Data: {{data}}</small>
+    </div>
+</div>
+{{else}}
+    <h5>Nenhuma postagem</h5>
+{{/each}}
